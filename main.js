@@ -81,3 +81,5 @@ function stopWatch(btn, i, sec, min){
 		}, 10.1)
 	}
 }
+
+console.log('Проверка')
