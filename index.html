@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="website icon" type="png" href="images/3d-alarm.png">
+	<link rel="stylesheet" href="main.css">
+	<script src="main.js" defer></script>
+	<title>Clock</title>
+</head>
+
+<body>
+	<div class="tabPanel">
+		<div class="tabPanel-links">
+			<a href="#!" class="tabPanel-links--a active">Часы</a>
+			<a href="#!" class="tabPanel-links--a">Секундомер <span class="indicator"></span></a>
+		</div>
+		<div class="tabPanel-content">
+			<div class="tabPanel-content-item active">
+				<div class="arrowClock">
+					<div class="arrowClock-number">
+						<div class="arrowClock-number-num num-3">3</div>
+						<div class="arrowClock-number-num num-6">6</div>
+						<div class="arrowClock-number-num num-9">9</div>
+						<div class="arrowClock-number-num num-12">12</div>
+						<div class="arrowClock-number-arr num-1-7"></div>
+						<div class="arrowClock-number-arr num-2-8"></div>
+						<div class="arrowClock-number-arr num-4-10"></div>
+						<div class="arrowClock-number-arr num-5-11"></div>
+					</div>
+					<div class="arr-hours"></div>
+					<div class="arr-minutes"></div>
+					<div class="arr-seconds"></div>
+				</div>
+				<div class="numberClock">
+					<div class="numberClock-num num-hours">00</div>
+					<div class="numberClock-num num-minutes">00</div>
+					<div class="numberClock-num num-seconds">00</div>
+				</div>
+			</div>
+			<div class="tabPanel-content-item">
+				<div class="stopWatch">
+					<div class="stopWatch__number">
+						<div class="stopWatch__number-num minutes"><span>00</span>MIL.</div>
+						<div class="stopWatch__number-num seconds"><span>00</span>SEC.</div>
+						<div class="stopWatch__number-num miliseconds"><span>00</span>MiL.</div>
+					</div>
+					<div class="stopWatch__btn">
+						<button class="start">start</button>
+						<button class="result">result</button>
+					</div>
+					<div class="stopWatch__result">
+						<p>10:23:65</p>
+						<p>10:23:65</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
