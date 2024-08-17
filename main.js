@@ -10,10 +10,11 @@ const arrHours = document.querySelector('.arr-hours'),
 	indicator = document.querySelector('.indicator'),
 	stopWatchMinutes = document.querySelector('.minutes span'),
 	stopWatchSeconds = document.querySelector('.seconds span'),
-	stopWatchMiliseconds = document.querySelector('.miliseconds span')
-	
+	stopWatchMiliseconds = document.querySelector('.miliseconds span'),
+	stopWatchResult = document.querySelector('.result'),
+	stopWatchInfo = document.querySelector('.stopWatch__result')
 
-	tabLinks.forEach(function (link, key) {
+tabLinks.forEach(function (link, key) {
 	link.addEventListener('click', function () {
 		tabLinks.forEach(function (linkItem, key) {
 			tabLinks[key].classList.remove('active')
@@ -43,43 +44,72 @@ function clock() {
 }
 clock()
 
-stopWatchBtn.addEventListener('click', function(){
-	if(stopWatchBtn.innerHTML === 'start'){
+stopWatchBtn.addEventListener('click', function () {
+	if (stopWatchBtn.innerHTML === 'start') {
 		stopWatchBtn.innerHTML = 'stop'
 		indicator.classList.add('indicator-start')
-		stopWatch(stopWatchBtn, 0, 55, 0)
-	}else if(stopWatchBtn.innerHTML === 'stop'){
+		stopWatch(stopWatchBtn, 0, 0, 0)
+	} else if (stopWatchBtn.innerHTML === 'stop') {
 		stopWatchBtn.innerHTML = 'clear'
 		indicator.classList.remove('indicator-start')
 		indicator.classList.add('indicator-stop')
-	}else{
+	} else {
 		stopWatchBtn.innerHTML = 'start'
 		indicator.classList.remove('indicator-stop')
+		stopWatchMinutes.innerHTML = '00'
+		stopWatchSeconds.innerHTML = '00'
+		stopWatchMiliseconds.innerHTML = '00'
+		// stopWatchInfo.innerHTML = ''
 	}
-	
+	stopWatchInfoStr(stopWatchBtn.innerHTML)
+	// console.log(stopWatchBtn.innerHTML)
 })
 
-function stopWatch(btn, i, sec, min){
-	if(btn.innerHTML === 'stop'){
-		if(i == 100){
+function stopWatch(btn, i, sec, min) {
+	if (btn.innerHTML === 'stop') {
+		if (i == 100) {
 			i = 0
-			if(sec == 60){
+			if (sec == 60) {
 				min++
 				sec = 0
 				stopWatchMinutes.innerHTML = min < 10 ? `0${min}` : min
 				stopWatchSeconds.innerHTML = sec < 10 ? `0${sec}` : sec
-			}else {
+			} else {
 				stopWatchSeconds.innerHTML = sec < 10 ? `0${sec}` : sec
 				sec++
 			}
-		}else{
+		} else {
 			stopWatchMiliseconds.innerHTML = i
 			i++
 		}
-		setTimeout(()=>{
+		setTimeout(() => {
 			stopWatch(btn, i, sec, min)
 		}, 10.1)
 	}
 }
+function stopWatchInfoStr(resBtn) {
+	let min = stopWatchMinutes.innerHTML,
+		sec = stopWatchSeconds.innerHTML,
+		mil = stopWatchMiliseconds.innerHTML,
+		str = ''
+		
+	
+		stopWatchResult.addEventListener('click', () => {
+			if (resBtn === 'stop') {
+				str = `<p>${min}:${sec}:${mil}</p>`
+				stopWatchInfo.innerHTML += str
+			}
+			else if(resBtn === 'clear' || resBtn === 'start'){
+					stopWatchInfo.innerHTML = ''
+				}
+		})
+}
 
-console.log('Проверка')
+
+// stopWatchResult.addEventListener('click', () => {
+// 	let min = stopWatchMinutes.innerHTML,
+// 		sec = stopWatchSeconds.innerHTML,
+// 		mil = stopWatchMiliseconds.innerHTML,
+// 		str = `<p>${min}:${sec}:${mil}</p>`
+// 		stopWatchInfo.innerHTML += str
+// })
