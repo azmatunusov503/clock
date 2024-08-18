@@ -49,6 +49,7 @@ stopWatchBtn.addEventListener('click', function () {
 		stopWatchBtn.innerHTML = 'stop'
 		indicator.classList.add('indicator-start')
 		stopWatch(stopWatchBtn, 0, 0, 0)
+
 	} else if (stopWatchBtn.innerHTML === 'stop') {
 		stopWatchBtn.innerHTML = 'clear'
 		indicator.classList.remove('indicator-start')
@@ -59,9 +60,9 @@ stopWatchBtn.addEventListener('click', function () {
 		stopWatchMinutes.innerHTML = '00'
 		stopWatchSeconds.innerHTML = '00'
 		stopWatchMiliseconds.innerHTML = '00'
-		// stopWatchInfo.innerHTML = ''
+  stopWatchInfo.innerHTML = ''
 	}
-	stopWatchInfoStr(stopWatchBtn.innerHTML)
+
 	// console.log(stopWatchBtn.innerHTML)
 })
 
@@ -87,29 +88,13 @@ function stopWatch(btn, i, sec, min) {
 		}, 10.1)
 	}
 }
-function stopWatchInfoStr(resBtn) {
+
+
+stopWatchResult.addEventListener('click', () => {
 	let min = stopWatchMinutes.innerHTML,
 		sec = stopWatchSeconds.innerHTML,
 		mil = stopWatchMiliseconds.innerHTML,
-		str = ''
-		
-	
-		stopWatchResult.addEventListener('click', () => {
-			if (resBtn === 'stop') {
-				str = `<p>${min}:${sec}:${mil}</p>`
-				stopWatchInfo.innerHTML += str
-			}
-			else if(resBtn === 'clear' || resBtn === 'start'){
-					stopWatchInfo.innerHTML = ''
-				}
-		})
-}
+		str = `<p>${min}:${sec}:${mil}</p>`
+		stopWatchInfo.innerHTML += str
+})
 
-
-// stopWatchResult.addEventListener('click', () => {
-// 	let min = stopWatchMinutes.innerHTML,
-// 		sec = stopWatchSeconds.innerHTML,
-// 		mil = stopWatchMiliseconds.innerHTML,
-// 		str = `<p>${min}:${sec}:${mil}</p>`
-// 		stopWatchInfo.innerHTML += str
-// })
